@@ -1,12 +1,12 @@
 Introduzione agli Slivers:
-    ☐ Cos'è uno Sliver
-    ☐ Cos'è una CustomScrollView
+    ✔ Cos'è uno Sliver @done(20-05-24 18:20)
+    ✔ Cos'è una CustomScrollView @done(20-05-24 18:22)
 
 Home Page:
-    ☐ Versione 1 "classica"
-    ☐ Versione 2 "con sliver"
+    ✔ Versione 1 "classica" @done(20-05-24 18:49)
+    ✔ Versione 2 "con sliver" @done(20-05-24 18:49)
 
 Profile Page:
-    ☐ AppBar espandibile
-    ☐ SliverGrid e SliverList insieme
-    ☐ SliverToBoxAdapter
+    ✔ AppBar espandibile @done(20-05-24 19:24)
+    ✔ SliverGrid e SliverList insieme @done(20-05-24 19:24)
+    ✔ SliverToBoxAdapter @done(20-05-24 19:24)

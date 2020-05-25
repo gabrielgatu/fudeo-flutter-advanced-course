@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
         slivers: <Widget>[
           appBar(context),
           sectionTitle("My photos"),
-          listPhotos(),
+          gridImage(),
           sectionTitle("My contacts"),
           contacts(),
         ],
@@ -26,30 +26,32 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget appBar(BuildContext context) => SliverAppBar(
-        title: Text("My awesome contact"),
+        title: Text("Elon"),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back),
         ),
         expandedHeight: 350,
         flexibleSpace: FlexibleSpaceBar(
-          background: Image.asset(
-            "asset/elon.jpg",
-            fit: BoxFit.cover,
-          ),
+            background: Image.asset(
+          "asset/elon.jpg",
+          fit: BoxFit.cover,
+        )),
+      );
+
+  Widget sectionTitle(String text) => SliverToBoxAdapter(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16, 25, 16, 20),
+          child: Text(text,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
         ),
       );
 
-  Widget sectionTitle(String title) => SliverToBoxAdapter(
-          child: Padding(
-        padding: EdgeInsets.fromLTRB(16, 25, 0, 20),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-          Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        ]),
-      ));
-
-  Widget listPhotos() => SliverPadding(
-        padding: EdgeInsets.only(top: 3),
+  Widget gridImage() => SliverPadding(
+        padding: EdgeInsets.all(5),
         sliver: SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
@@ -57,28 +59,31 @@ class ProfilePage extends StatelessWidget {
             crossAxisSpacing: 5,
           ),
           delegate:
-              SliverChildBuilderDelegate((context, index) => photo(_photos[index % (_photos.length)]), childCount: 30),
+              SliverChildBuilderDelegate((context, index) => photo(_photos[index % _photos.length]), childCount: 30),
         ),
       );
 
-  Widget photo(String photoUrl) => Image.network(photoUrl, fit: BoxFit.cover);
+  Widget photo(String imageUrl) => Image.network(
+        imageUrl,
+        fit: BoxFit.cover,
+      );
 
   Widget contacts() => SliverPadding(
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-      sliver: SliverList(
-        delegate: SliverChildListDelegate([
-          contactButton(text: "Instagram", color: Colors.deepPurple),
-          contactButton(text: "Facebook", color: Colors.indigo),
-          contactButton(text: "Twitter", color: Colors.blue),
-        ]),
-      ));
+        padding: EdgeInsets.all(5),
+        sliver: SliverList(
+          delegate: SliverChildListDelegate([
+            contactButton(text: "Instagram", color: Colors.deepPurple),
+            contactButton(text: "Facebook", color: Colors.indigo),
+            contactButton(text: "Twitter", color: Colors.blue),
+          ]),
+        ),
+      );
 
   Widget contactButton({@required String text, @required Color color}) => MaterialButton(
         onPressed: () {},
-        minWidth: double.infinity,
         height: 40,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         color: color,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         textColor: Colors.white,
         child: Text(text),
       );

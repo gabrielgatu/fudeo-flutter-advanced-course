@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/services.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -39,8 +37,8 @@ class HomePageState extends State<HomePage> {
     zoom: 15,
   );
 
-  final Completer<String> googleMapsStyle = Completer();
   final Completer<GoogleMapController> googleMapsController = Completer();
+  final Completer<String> googleMapsStyle = Completer();
   final Set<Marker> markers = {};
   final Set<Polyline> polylines = {};
 
@@ -92,42 +90,40 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget panel() => Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: 50,
-              height: 4,
-              margin: EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3),
-                color: Colors.grey.shade300,
-              ),
+  Widget panel() => Column(
+        children: <Widget>[
+          Container(
+            width: 50,
+            height: 4,
+            margin: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              color: Colors.grey.shade300,
             ),
-            transportMedium(imageAsset: "asset/uber-normal.png", name: "UberX", time: "12:00", price: "\$10.50"),
-            transportMedium(imageAsset: "asset/uber-pop.jpg", name: "Pool", time: "12:10", price: "\$7.50"),
-            Divider(thickness: 1),
-            SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text("Pay at station or at transit services", style: TextStyle(fontSize: 13)),
-                  SizedBox(height: 10),
-                  MaterialButton(
-                    onPressed: () {},
-                    minWidth: double.infinity,
-                    height: 50,
-                    color: Colors.black,
-                    textColor: Colors.white,
-                    child: Text("SEE ROUTES"),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          ),
+          transportMedium(imageAsset: "asset/uber-normal.png", name: "UberX", time: "12:00", price: "\$10.50"),
+          transportMedium(imageAsset: "asset/uber-pop.jpg", name: "Pool", time: "12:10", price: "\$7.50"),
+          Divider(thickness: 1),
+          SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text("Pay at station or at transit services", style: TextStyle(fontSize: 13)),
+                SizedBox(height: 10),
+                MaterialButton(
+                  onPressed: () {},
+                  minWidth: double.infinity,
+                  height: 50,
+                  color: Colors.black,
+                  textColor: Colors.white,
+                  child: Text("SEE ROUTES"),
+                ),
+              ],
+            ),
+          )
+        ],
       );
 
   Widget transportMedium({
