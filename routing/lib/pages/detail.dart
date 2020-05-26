@@ -20,6 +20,7 @@ class DetailPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: color,
           title: Text(mail.title),
           centerTitle: true,
           leading: IconButton(
