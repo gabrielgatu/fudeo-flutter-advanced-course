@@ -1,0 +1,8 @@
+Introduzione al routing in Flutter:
+    ☐ push
+    ☐ pushNamed
+    ☐ passaggio di argomenti
+
+Animazioni tra una schermata e l'altra:
+    ☐ libreria page_transition
+    ☐ integrazione con push e pushNamed
