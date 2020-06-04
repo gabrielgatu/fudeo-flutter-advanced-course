@@ -1,0 +1,17 @@
+Aprire link esterni:
+    ☐ Installazione
+    ☐ Numero di telefono
+    ☐ Mandare un email
+    ☐ Aprire un link nel browser
+
+Permessi:
+    ☐ Installazione ed aggiunta dei permessi nel Manifest e plist
+    ☐ Verificare e richiedere l'abilitazione di nuovi permessi
+
+Galleria:
+    ☐ Installazione
+    ☐ Scattare foto ed integrarle nell'interfaccia
+
+Sensori:
+    ☐ Installazione
+    ☐ Interagire con il giroscopio
