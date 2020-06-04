@@ -1,10 +1,11 @@
 Prima parte:
-    ☐ Introduzione a google maps
-    ☐ interfaccia grafica con slider dal basso
+    ✔ Introduzione a google maps @done(20-05-25 19:38)
+    ✔ Ricapitolo codice sorgente insieme @done(20-05-25 19:49)
+    ✔ interfaccia grafica con slider dal basso @done(20-05-25 20:08)
 
 Seconda parte:
-    ☐ Creazione API Key per poter usare google maps
-    ☐ Installazione google maps per Android ed iOS
-    ☐ Primo uso e configurazioni
-    ☐ Definizione markers
-    ☐ Definizione polylines
+    ✔ Creazione API Key per poter usare google maps @done(20-05-25 20:21)
+    ✔ Installazione google maps per Android ed iOS @done(20-05-25 20:21)
+    ✔ Primo uso, styling e configurazioni @done(20-05-25 20:42)
+    ✔ Definizione markers @done(20-05-25 20:51)
+    ✔ Definizione polylines @done(20-05-25 20:51)

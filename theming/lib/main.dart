@@ -58,13 +58,16 @@ class HomePage extends StatelessWidget {
       );
 
   Widget loginPanel(BuildContext context) => Container(
-      padding: EdgeInsets.fromLTRB(30, 40, 30, 10),
+      padding: EdgeInsets.fromLTRB(30, 40, 30, 20),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
-          )),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withAlpha(100), offset: Offset(0, -5), blurRadius: 10, spreadRadius: 1),
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -117,7 +120,7 @@ class HomePage extends StatelessWidget {
                     )),
                 child: Text("Login Now",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).primaryColorLight,
                     ))),
@@ -133,11 +136,11 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(
                       width: 1,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).primaryColorLight,
                     )),
                 child: Text("Create a New Account",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).primaryColor,
                     ))),

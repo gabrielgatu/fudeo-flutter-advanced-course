@@ -37,50 +37,48 @@ class HomePageState extends State<HomePage> {
     zoom: 15,
   );
 
-  final Completer<GoogleMapController> googleMapsController = Completer();
-  final Completer<String> googleMapsStyle = Completer();
+  final Completer<String> googleMapStyle = Completer();
+  final Completer<GoogleMapController> googleMapController = Completer();
   final Set<Marker> markers = {};
   final Set<Polyline> polylines = {};
 
   @override
   void initState() {
     super.initState();
-    rootBundle.loadString("asset/googlemaps.json").then((styles) => googleMapsStyle.complete(styles));
+    rootBundle.loadString("asset/googlemaps.json").then((style) => googleMapStyle.complete(style));
     setupMap();
   }
 
   void setupMap() async {
-    final googlemaps = await googleMapsController.future;
-    final styles = await googleMapsStyle.future;
+    final googlemap = await googleMapController.future;
+    final style = await googleMapStyle.future;
 
-    googlemaps.setMapStyle(styles);
+    googlemap.setMapStyle(style);
 
     setState(() {
       markers.add(Marker(
         markerId: MarkerId(initialPosition.target.toString()),
         position: initialPosition.target,
-        icon: BitmapDescriptor.defaultMarker,
-        infoWindow: InfoWindow(title: "From here"),
+        infoWindow: InfoWindow(title: "Starting point"),
       ));
 
       markers.add(Marker(
         markerId: MarkerId(endPosition.target.toString()),
         position: endPosition.target,
-        icon: BitmapDescriptor.defaultMarker,
-        infoWindow: InfoWindow(title: "To here"),
+        infoWindow: InfoWindow(title: "End point"),
       ));
 
       polylines.add(Polyline(
-        polylineId: PolylineId("path"),
+        polylineId: PolylineId(initialPosition.target.toString() + endPosition.target.toString()),
         points: [initialPosition.target, endPosition.target],
-        width: 3,
+        width: 4,
       ));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: SlidingUpPanel(
         minHeight: 100,
         maxHeight: 300,
@@ -91,38 +89,34 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget panel() => Column(
-        children: <Widget>[
+        children: [
           Container(
-            width: 50,
+            width: 60,
             height: 4,
             margin: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: Colors.grey.shade300,
+              color: Colors.grey.shade400,
+              borderRadius: BorderRadius.circular(4),
             ),
           ),
-          transportMedium(imageAsset: "asset/uber-normal.png", name: "UberX", time: "12:00", price: "\$10.50"),
+          transportMedium(imageAsset: "asset/uber-normal.png", name: "UberX", time: "12:05", price: "\$10.50"),
           transportMedium(imageAsset: "asset/uber-pop.jpg", name: "Pool", time: "12:10", price: "\$7.50"),
           Divider(thickness: 1),
-          SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text("Pay at station or at transit services", style: TextStyle(fontSize: 13)),
-                SizedBox(height: 10),
-                MaterialButton(
-                  onPressed: () {},
-                  minWidth: double.infinity,
-                  height: 50,
-                  color: Colors.black,
-                  textColor: Colors.white,
-                  child: Text("SEE ROUTES"),
-                ),
-              ],
-            ),
-          )
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text("Book it now", style: TextStyle(fontSize: 13)),
+              SizedBox(height: 10),
+              MaterialButton(
+                onPressed: () {},
+                minWidth: double.infinity,
+                height: 50,
+                color: Colors.black,
+                textColor: Colors.white,
+                child: Text("BOOK RIDE"),
+              ),
+            ]),
+          ),
         ],
       );
 
@@ -136,16 +130,16 @@ class HomePageState extends State<HomePage> {
         leading: Image.asset(imageAsset, width: 60),
         title: Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(time),
-        trailing: Text(price, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+        trailing: Text(price),
       );
 
   Widget map() => GoogleMap(
-        zoomControlsEnabled: false,
         initialCameraPosition: initialPosition,
-        polylines: polylines,
+        zoomControlsEnabled: false,
         markers: markers,
+        polylines: polylines,
         onMapCreated: (GoogleMapController controller) {
-          this.googleMapsController.complete(controller);
+          this.googleMapController.complete(controller);
         },
       );
 }

@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'package:routing/models/mail.dart';
 
-class DetailPageArgs {
-  DetailPageArgs({@required this.mail, @required this.color});
+import '../models/mail.dart';
 
-  MailModel mail;
-  Color color;
+class DetailPageArgs {
+  DetailPageArgs({
+    @required this.mail,
+    @required this.color,
+  });
+
+  final MailModel mail;
+  final Color color;
 }
 
 class DetailPage extends StatelessWidget {
-  static String routeName = "/mail/detail";
+  static String routeName = '/mail/detail';
 
   @override
   Widget build(BuildContext context) {
     final DetailPageArgs args = ModalRoute.of(context).settings.arguments;
-    final mail = args.mail;
-    final color = args.color;
+    final MailModel mail = args.mail;
+    final Color color = args.color;
 
     return Scaffold(
         appBar: AppBar(
