@@ -9,7 +9,6 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
 
   @override
   Stream<ShoppingCartState> mapEventToState(ShoppingCartEvent event) async* {
-    print(event);
     if (event is ShoppingCartEventAddProduct) {
       final product = event.product;
       final products = getIt<ShoppingCartRepository>().addProduct(product);

@@ -27,49 +27,51 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final messageImageUrl =
       "https://images.unsplash.com/photo-1591264135433-9572cf016ca6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80";
-  final imagePicker = ImagePicker();
-  List<String> photos = [];
-  bool privacyMode = false;
+  final ImagePicker imageProvider = ImagePicker();
+  List<String> photoUrls = [];
+  bool privacyModeOn = false;
 
   @override
   void initState() {
     super.initState();
-    onStartListeningToGyro();
+    startListeningToGyroEvents();
   }
 
-  void onStartListeningToGyro() async {
-    gyroscopeEvents.listen((GyroscopeEvent event) async {
+  void startListeningToGyroEvents() {
+    gyroscopeEvents.listen((event) async {
       if (event.y.abs() > 8) {
         setState(() {
-          privacyMode = true;
+          privacyModeOn = true;
         });
 
         await Future.delayed(Duration(seconds: 5));
+
         setState(() {
-          privacyMode = false;
+          privacyModeOn = false;
         });
       }
     });
   }
 
-  void onCallClicked() async {
+  void onPhoneClick() async {
     final url = "tel:+1 555 010 999";
     if (await canLaunch(url)) {
       await launch(url);
     }
   }
 
-  void onMailClicked() async {
-    final userEmail = "jerome@gmail.com";
-    final subject = "Hey Jerome";
-    final body = "What's up man!";
-    final url = "mailto:$userEmail?subject=$subject&body=$body";
+  void onMailClick() async {
+    final userMail = "jerome@gmail.com";
+    final subject = "Hey jerome";
+    final body = "What's up?!";
+    final url = "mailto:$userMail?subject=$subject&body=$body";
+
     if (await canLaunch(url)) {
       await launch(url);
     }
   }
 
-  void onLinkClicked(String url) async {
+  void onUrlClick(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     }
@@ -77,10 +79,9 @@ class _HomePageState extends State<HomePage> {
 
   void onAddPhotoClick() async {
     if (await Permission.camera.request().isGranted) {
-      final pickedFile = await imagePicker.getImage(source: ImageSource.camera);
-      if (pickedFile == null) return;
+      final pickedFile = await imageProvider.getImage(source: ImageSource.camera);
       setState(() {
-        photos.add(pickedFile.path);
+        photoUrls.add(pickedFile.path);
       });
     }
   }
@@ -110,11 +111,11 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: onCallClicked,
+            onPressed: onPhoneClick,
             icon: Icon(Icons.phone),
           ),
           IconButton(
-            onPressed: onMailClicked,
+            onPressed: onMailClick,
             icon: Icon(Icons.email),
           ),
         ],
@@ -122,7 +123,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget body() => Column(
         children: <Widget>[
-          privacyMode ? privacyModePlaceholder() : messagesList(),
+          privacyModeOn ? privacyModePlaceholder() : messagesList(),
           chatInputs(),
         ],
       );
@@ -130,8 +131,8 @@ class _HomePageState extends State<HomePage> {
   Widget messagesList() => Expanded(
           child: ListView.builder(
         reverse: true,
-        itemCount: photos.length,
-        itemBuilder: (context, index) => message(photos[index]),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) => message(photoUrls[index]),
       ));
 
   Widget privacyModePlaceholder() => Expanded(
@@ -174,10 +175,10 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.camera_alt),
       );
 
-  Widget message(String localPhotoPath) => Align(
+  Widget message(String imagePath) => Align(
         alignment: Alignment.centerRight,
         child: GestureDetector(
-          onTap: () => onLinkClicked(messageImageUrl),
+          onTap: () => onUrlClick(messageImageUrl),
           child: Column(
             children: <Widget>[
               Container(
@@ -187,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(localPhotoPath),
+                      image: AssetImage(imagePath),
                       fit: BoxFit.cover,
                     ),
                     boxShadow: [

@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           return BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, shoppingCart) {
             return SliverGrid.count(
               crossAxisCount: 2,
-              childAspectRatio: 0.55,
+              childAspectRatio: 0.65,
               children: List.generate(products.length, (index) {
                 final product = products[index];
                 final isProductInShoppingCart = (shoppingCart as ShoppingCartStateLoaded).products.contains(product);

@@ -1,17 +1,17 @@
 Aprire link esterni:
-    ☐ Installazione
-    ☐ Numero di telefono
-    ☐ Mandare un email
-    ☐ Aprire un link nel browser
+    ✔ Installazione @done(20-06-04 19:52)
+    ✔ Numero di telefono @done(20-06-04 19:52)
+    ✔ Mandare un email @done(20-06-04 19:52)
+    ✔ Aprire un link nel browser @done(20-06-04 19:52)
 
 Permessi:
-    ☐ Installazione ed aggiunta dei permessi nel Manifest e plist
-    ☐ Verificare e richiedere l'abilitazione di nuovi permessi
+    ✔ Installazione ed aggiunta dei permessi nel Manifest e plist @done(20-06-04 19:58)
+    ✔ Verificare e richiedere l'abilitazione di nuovi permessi @done(20-06-04 20:03)
 
 Fotocamera:
-    ☐ Installazione
-    ☐ Scattare foto ed integrarle nell'interfaccia
+    ✔ Installazione @done(20-06-04 20:14)
+    ✔ Scattare foto ed integrarle nell'interfaccia @done(20-06-04 20:14)
 
 Sensori:
-    ☐ Installazione
-    ☐ Interagire con il giroscopio
+    ✔ Installazione @done(20-06-04 20:24)
+    ✔ Interagire con il giroscopio @done(20-06-04 20:24)

@@ -11,7 +11,7 @@ final fakeProducts = [
   ProductModel(
     price: 12.99,
     name: "Costume stampato",
-    imageUrl: "https://static.bershka.net/4/photos2/2020/V/0/2/p/4221/305/622/02/4221305622_6_2_3.jpg",
+    imageUrl: "https://static.bershka.net/4/photos2/2020/I/0/2/p/0261/777/712/01/0261777712_2_7_1.jpg",
   ),
   ProductModel(
     price: 25.99,
@@ -26,7 +26,7 @@ final fakeProducts = [
   ProductModel(
     price: 9.99,
     name: "Maglietta con stampa",
-    imageUrl: "https://static.bershka.net/4/photos2/2020/V/0/2/p/2434/580/712/02/2434580712_6_2_3.jpg",
+    imageUrl: "https://static.bershka.net/4/photos2/2020/V/0/2/p/0926/777/312/01/0926777312_2_7_1.jpg",
   ),
   ProductModel(
     price: 25.99,
@@ -46,6 +46,6 @@ final fakeProducts = [
   ProductModel(
     price: 25.99,
     name: "Bermuda denim jogger",
-    imageUrl: "https://static.bershka.net/4/photos2/2020/V/0/2/p/2651/534/712/01/2651534712_6_2_3.jpg",
+    imageUrl: "https://static.bershka.net/4/photos2/2020/I/0/2/p/2650/335/712/01/2650335712_2_7_1.jpg",
   ),
 ];
