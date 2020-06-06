@@ -34,10 +34,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    onStartListenToGyro();
+    onStartListeningToGyro();
   }
 
-  void onStartListenToGyro() async {
+  void onStartListeningToGyro() async {
     gyroscopeEvents.listen((GyroscopeEvent event) async {
       if (event.y.abs() > 8) {
         setState(() {
@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
   void onAddPhotoClick() async {
     if (await Permission.camera.request().isGranted) {
       final pickedFile = await imagePicker.getImage(source: ImageSource.camera);
+      if (pickedFile == null) return;
       setState(() {
         photos.add(pickedFile.path);
       });
@@ -182,6 +183,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 width: 250,
                 height: 200,
+                margin: EdgeInsets.only(right: 10, bottom: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -192,17 +194,6 @@ class _HomePageState extends State<HomePage> {
                       BoxShadow(
                           color: Colors.black.withAlpha(150), offset: Offset(-3, -3), blurRadius: 10, spreadRadius: 3),
                     ]),
-              ),
-              Container(
-                width: 250,
-                padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                child: Text(messageImageUrl,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 12,
-                    )),
               ),
             ],
           ),

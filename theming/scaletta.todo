@@ -8,7 +8,7 @@ Introduzione e risorse utili per il design:
         https://pub.dev/packages/google_fonts#-readme-tab-
 
 Pratica:
-    ☐ Come definire un tema personalizzato globale
-    ☐ Colori personalizzati per far risaltare il brand
-    ☐ Come modificare il colore della status bar
-    ☐ Sperimentare fonts con "Google fonts" ed impostare un font personalizzato
+    ✔ Come definire un tema personalizzato globale @done(20-05-28 19:25)
+    ✔ Colori personalizzati per far risaltare il brand @done(20-05-28 19:25)
+    ✔ Come modificare il colore della status bar @done(20-05-28 19:29)
+    ✔ Sperimentare fonts con "Google fonts" ed impostare un font personalizzato @done(20-05-28 19:40)

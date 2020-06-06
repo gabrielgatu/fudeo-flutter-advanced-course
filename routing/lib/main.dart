@@ -4,6 +4,8 @@ import 'package:page_transition/page_transition.dart';
 import 'package:routing/pages/detail.dart';
 import 'package:routing/pages/home.dart';
 
+import 'pages/detail.dart';
+
 void main() {
   runApp(App());
 }
@@ -16,17 +18,14 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.red,
       ),
-      routes: {
-        DetailPage.routeName: (context) => DetailPage(),
-      },
       onGenerateRoute: (settings) {
-        if (settings.name == DetailPage.routeName) {
+        if (settings.name == DetailPage.routeName)
           return PageTransition(
             type: PageTransitionType.downToUp,
             child: DetailPage(),
             settings: settings,
           );
-        } else
+        else
           return null;
       },
       home: HomePage(),
