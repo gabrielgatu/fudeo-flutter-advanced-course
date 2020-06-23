@@ -2,15 +2,15 @@ import 'package:state/models/product.dart';
 
 class ProductRepository {
   Future<List<ProductModel>> all() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 3));
     return fakeProducts;
   }
 }
 
 final fakeProducts = [
   ProductModel(
-    price: 12.99,
-    name: "Costume stampato",
+    price: 20.99,
+    name: "Pantaloni lino",
     imageUrl: "https://static.bershka.net/4/photos2/2020/I/0/2/p/0261/777/712/01/0261777712_2_7_1.jpg",
   ),
   ProductModel(
