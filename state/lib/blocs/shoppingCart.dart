@@ -1,14 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state/main.dart';
 import 'package:state/models/product.dart';
-import 'package:state/repositories/shoppingCartRepository.dart';
+import 'package:state/repositories/shoppingCart.dart';
 
-class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
+class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartStateLoaded> {
   @override
-  ShoppingCartState get initialState => ShoppingCartStateLoaded([]);
+  ShoppingCartStateLoaded get initialState => ShoppingCartStateLoaded(
+        getIt<ShoppingCartRepository>().products,
+      );
 
   @override
-  Stream<ShoppingCartState> mapEventToState(ShoppingCartEvent event) async* {
+  Stream<ShoppingCartStateLoaded> mapEventToState(ShoppingCartEvent event) async* {
     if (event is ShoppingCartEventAddProduct) {
       final product = event.product;
       final products = getIt<ShoppingCartRepository>().addProduct(product);
@@ -33,9 +35,7 @@ class ShoppingCartEventRemoveProduct extends ShoppingCartEvent {
   final ProductModel product;
 }
 
-abstract class ShoppingCartState {}
-
-class ShoppingCartStateLoaded extends ShoppingCartState {
+class ShoppingCartStateLoaded {
   ShoppingCartStateLoaded(this.products);
   final List<ProductModel> products;
 }

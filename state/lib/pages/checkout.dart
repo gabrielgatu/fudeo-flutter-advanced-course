@@ -27,11 +27,11 @@ class CheckoutPage extends StatelessWidget {
       );
 
   Widget body(BuildContext context) =>
-      BlocConsumer<ShoppingCartBloc, ShoppingCartState>(listener: (context, shoppingCart) {
-        final products = (shoppingCart as ShoppingCartStateLoaded).products;
+      BlocConsumer<ShoppingCartBloc, ShoppingCartStateLoaded>(listener: (context, shoppingCart) {
+        final products = shoppingCart.products;
         if (products.isEmpty) Navigator.pop(context);
       }, builder: (context, shoppingCart) {
-        final products = (shoppingCart as ShoppingCartStateLoaded).products;
+        final products = shoppingCart.products;
         final totalCost = products.length > 0 ? products.map((it) => it.price).reduce((a, b) => a + b) : 0.0;
 
         return Padding(

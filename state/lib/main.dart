@@ -7,7 +7,7 @@ import 'package:state/blocs/allProducts.dart';
 import 'package:state/blocs/shoppingCart.dart';
 
 import 'package:state/repositories/product.dart';
-import 'package:state/repositories/shoppingCartRepository.dart';
+import 'package:state/repositories/shoppingCart.dart';
 
 import 'package:state/pages/checkout.dart';
 import 'package:state/pages/home.dart';

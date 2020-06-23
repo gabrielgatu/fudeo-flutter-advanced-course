@@ -1,0 +1,26 @@
+Scaricare prodotti per la home:
+    ☐ Creazione ProductRepository
+    ☐ Utilizzo in initState della HomePage per scaricare dati da ProductRepository
+    Refactoring in Bloc:
+        ☐ Definizione AllProductBloc
+        ☐ Registrazione Bloc in main()
+        ☐ Utilizzo in initState della HomePage
+        ☐ Sottoscrizione in gridProducts()
+    Refactoring Repository:
+        ☐ Utilizzo GetIt
+
+Gestione carrello:
+    ☐ Creazione ShoppingCartRepository
+    ☐ Registrazione con GetIt
+    Bloc:
+        ☐ Definizione ShoppingCartBloc
+        ☐ Registrazione Bloc in main()
+        Home:
+            ☐ Aggiunta nuovi prodotti in buildProduct()
+            ☐ Sottoscrizione in gridProducts() per rimanere aggiornati sui prodotti in carrello
+            ☐ Rimozione prodotti in buildProduct()
+            ☐ Numero prodotti carrello in shoppingCardIcon()
+        Checkout:
+            ☐ Sottoscrizione a ShoppingCartBloc in body()
+            ☐ Rimozione prodotti dal carrello in product()
+            ☐ Integrazione BlocListener per uscire dalla pagina se carrello vuoto

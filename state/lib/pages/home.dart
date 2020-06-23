@@ -45,8 +45,8 @@ class _HomePageState extends State<HomePage> {
         ],
       );
 
-  Widget shoppingCardIcon() => BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, shoppingCart) {
-        final productsInShoppingCard = (shoppingCart as ShoppingCartStateLoaded).products.length;
+  Widget shoppingCardIcon() => BlocBuilder<ShoppingCartBloc, ShoppingCartStateLoaded>(builder: (context, shoppingCart) {
+        final productsInShoppingCard = shoppingCart.products.length;
         return Stack(
           children: <Widget>[
             IconButton(
@@ -82,13 +82,13 @@ class _HomePageState extends State<HomePage> {
           return SliverFillRemaining(child: Center(child: CircularProgressIndicator()));
         else {
           final products = (state as AllProductsStateLoaded).products;
-          return BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, shoppingCart) {
+          return BlocBuilder<ShoppingCartBloc, ShoppingCartStateLoaded>(builder: (context, shoppingCart) {
             return SliverGrid.count(
               crossAxisCount: 2,
               childAspectRatio: 0.65,
               children: List.generate(products.length, (index) {
                 final product = products[index];
-                final isProductInShoppingCart = (shoppingCart as ShoppingCartStateLoaded).products.contains(product);
+                final isProductInShoppingCart = shoppingCart.products.contains(product);
                 return buildProduct(product, isProductInShoppingCart);
               }),
             );
